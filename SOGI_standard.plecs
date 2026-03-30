@@ -1,0 +1,456 @@
+Plecs {
+  Name          "SOGI_standard"
+  Version       "4.9"
+  CircuitModel  "DiscStateSpace"
+  StartTime     "0.0"
+  TimeSpan      "1.0"
+  Timeout       ""
+  Solver        "FixedStepDiscrete"
+  MaxStep       "Ts"
+  InitStep      "-1"
+  FixedStep     "Ts*0.1"
+  Refine        "1"
+  ZCStepSize    "1e-9"
+  RelTol        "1e-3"
+  AbsTol        "-1"
+  TurnOnThreshold "0"
+  NonIdealSwitchResistance "1"
+  SyncFixedStepTasks "2"
+  UseSingleCommonBaseRate "2"
+  LossVariableLimitExceededMsg "3"
+  NegativeSwitchLossMsg "3"
+  DivisionByZeroMsg "3"
+  DatatypeOverflowMsg "3"
+  DatatypeInheritanceConflictMsg "2"
+  ContSampleTimeConflictMsg "2"
+  StiffnessDetectionMsg "2"
+  MaxConsecutiveZCs "1000"
+  AlgebraicLoopWithStateMachineMsg "3"
+  AssertionAction "1"
+  FixedPointDatatypeOverride "1"
+  InitializationCommands "Fs = 10000;\nTs = 1/Fs;\nN = 3;\nf = 50;\n"
+  InitialState  "1"
+  SystemState   ""
+  TaskingMode   "1"
+  TaskConfigurations ""
+  CodeGenParameterInlining "2"
+  CodeGenFloatingPointFormat "2"
+  CodeGenAbsTimeUsageMsg "3"
+  CodeGenBaseName ""
+  CodeGenOutputDir ""
+  CodeGenExtraOpts ""
+  CodeGenTarget "Generic"
+  CodeGenTargetSettings ""
+  ExtendedMatrixPrecision "1"
+  MatrixSignificanceCheck "2"
+  RemoveUnusedStateSpaceOutputs "2"
+  EnableStateSpaceSplitting "2"
+  DisplayStateSpaceSplitting "1"
+  DiscretizationMethod "2"
+  ExternalModeSettings ""
+  AlgebraicLoopMethod "1"
+  AlgebraicLoopTolerance "1e-6"
+  ScriptsDialogGeometry ""
+  ScriptsDialogSplitterPos "0"
+  Schematic {
+    Location      [0, 23; 1920, 997]
+    ZoomFactor    1.71498
+    SliderPosition [8, 0]
+    ShowBrowser   off
+    BrowserWidth  100
+    Component {
+      Type          SineGenerator
+      Name          "Sine Wave"
+      Show          off
+      Position      [305, 185]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Amplitude"
+        Value         "[1 0.2 0.5]"
+        Show          off
+      }
+      Parameter {
+        Variable      "Bias"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "Frequency"
+        Value         "[50 100 150]"
+        Show          off
+      }
+      Parameter {
+        Variable      "Phase"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "Units"
+        Value         "3"
+        Show          off
+      }
+    }
+    Component {
+      Type          Scope
+      Name          "Scope"
+      Show          off
+      Position      [545, 180]
+      Direction     up
+      Flipped       off
+      LabelPosition south
+      Location      [0, 40; 1920, 1080]
+      State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
+"G0AQQByAGUAYQAAAAAA/////wAAAF4A////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
+"///wAAAGgA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABoAP///wAAAAMAAAAAAAAAAPw"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABSAP///wAAB4AAAAP1AAAA"
+"BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
+"AAAAA=="
+      SavedViews    "AAAAAgAAAAA="
+      HeaderState   "{\"DefaultSecSize\":0,\"FirstSecSize\":136,\"Labels\":[],"
+"\"VisualIdxs\":[]}"
+      PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA"
+"AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+      Axes          "2"
+      TimeRange     "0"
+      ScrollingMode "1"
+      SingleTimeAxis "1"
+      Open          "0"
+      Ts            "-1"
+      SampleLimit   "0"
+      XAxisLabel    "Time / s"
+      ShowLegend    "1"
+      Axis {
+        Name          ""
+        AutoScale     1
+        MinValue      0
+        MaxValue      1
+        Signals       {}
+        SignalTypes   [ ]
+        Untangle      0
+        KeepBaseline  off
+        BaselineValue 0
+      }
+      Axis {
+        Name          ""
+        AutoScale     1
+        MinValue      0
+        MaxValue      1
+        Signals       {}
+        SignalTypes   [ ]
+        Untangle      0
+        KeepBaseline  off
+        BaselineValue 0
+      }
+      Fourier {
+        SingleXAxis       on
+        AxisLabel         "Frequency / Hz"
+        Scaling           0
+        PhaseDisplay      0
+        ShowFourierLegend off
+        Axis {
+          Name          ""
+          AutoScale     1
+          MinValue      0
+          MaxValue      1
+          Signals       {}
+          Untangle      0
+          KeepBaseline  off
+          BaselineValue 0
+        }
+        Axis {
+          Name          ""
+          AutoScale     1
+          MinValue      0
+          MaxValue      1
+          Signals       {}
+          Untangle      0
+          KeepBaseline  off
+          BaselineValue 0
+        }
+      }
+    }
+    Component {
+      Type          SignalMux
+      Name          "Mux"
+      Show          off
+      Position      [495, 175]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Width"
+        Value         "2"
+        Show          off
+      }
+    }
+    Component {
+      Type          Sum
+      Name          "Sum"
+      Show          off
+      Position      [350, 185]
+      Direction     up
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "IconShape"
+        Value         "2"
+        Show          off
+      }
+      Parameter {
+        Variable      "Inputs"
+        Value         "+"
+        Show          off
+      }
+      Parameter {
+        Variable      "DataType"
+        Value         "11"
+        Show          off
+      }
+      Parameter {
+        Variable      "DataTypeOverflowMode"
+        Value         "1"
+        Show          off
+      }
+    }
+    Component {
+      Type          CScript
+      Name          "C-Script28"
+      Show          off
+      Position      [430, 185]
+      Direction     up
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "DialogGeometry"
+        Value         "[961 31 958 1008]"
+        Show          off
+      }
+      Parameter {
+        Variable      "NumInputs"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "NumOutputs"
+        Value         "[1 N]"
+        Show          off
+      }
+      Parameter {
+        Variable      "NumContStates"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "NumDiscStates"
+        Value         "10"
+        Show          off
+      }
+      Parameter {
+        Variable      "NumZCSignals"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "DirectFeedthrough"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "Ts"
+        Value         "Ts"
+        Show          off
+      }
+      Parameter {
+        Variable      "TerminalBasedSampleTimes"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "Parameters"
+        Value         "[f N Ts]"
+        Show          off
+      }
+      Parameter {
+        Variable      "LangStandard"
+        Value         "2"
+        Show          off
+      }
+      Parameter {
+        Variable      "GnuExtensions"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "RuntimeCheck"
+        Value         "2"
+        Show          off
+      }
+      Parameter {
+        Variable      "HighlightLevel"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "Declarations"
+        Value         base64 "I2luY2x1ZGUgPHN0ZGlvLmg+CiNpbmNsdWRlIDxtYXRoLmg+"
+"CgojZGVmaW5lIE1fUEkgMy4xNDE1OTI2NTM1ODk3OTMyMzg0NgoKI2RlZmluZSB2IElucHV0U2lnb"
+"mFsKDAsMCkgICAgICAvLyBFbnRyYWRhIChzZcOxYWwgYSBlc3RpbWFyKQoKI2RlZmluZSBmX3AgUG"
+"FyYW1SZWFsRGF0YSgwLDApICAvLyBGcmVjdWVuY2lhIGRlIGxhIGZ1bmRhbWVudGFsCiNkZWZpbmU"
+"gVHMgUGFyYW1SZWFsRGF0YSgwLDIpIC8vIFRpZW1wbyBkZSBzYW1wbGVvCgpmbG9hdCBvbWVnYV9u"
+"b207CgovKiA9PT09PT09PT09PT09PT09PT09PT09PT09CiAgIFBhcsOhbWV0cm9zCiAgID09PT09P"
+"T09PT09PT09PT09PT09PT09PT0gKi8KZmxvYXQga19zb2dpICAgID0gMS40MTRmOwpmbG9hdCBLcC"
+"AgICAgICAgPSA4OC44ZjsKZmxvYXQgS2kgICAgICAgID0gMzk0MC4wZjsKCmZsb2F0IGtfdmVjWzN"
+"dID0gezEuNDE0ZiwxLjQxNGYsMS40MTRmfTsKCiNkZWZpbmUgTiAzCgovKiBPcmRlbiBhcm3Ds25p"
+"Y28gZGUgY2FkYSByYW1hICovCmZsb2F0IGhfdmVjW05dID0gezEuMGYsIDIuMGYsIDMuMGZ9OwoKL"
+"yogRXN0YWRvcyBkZWwgbVNPR0kgKi8KZmxvYXQgeDFbTl0gPSB7MC4wZn07ICAgICAgLy8gY29tcG"
+"9uZW50ZSBhbHBoYSBkZSBjYWRhIHJhbWEKZmxvYXQgeDJbTl0gPSB7MC4wZn07ICAgICAgLy8gY29"
+"tcG9uZW50ZSBiZXRhIGRlIGNhZGEgcmFtYQpmbG9hdCB2X3ByZXZfYXJyW05dID0gezAuMGZ9Owpm"
+"bG9hdCB1X3ByZXZfYXJyW05dID0gezAuMGZ9OwoKLyogQ29lZmljaWVudGVzIHBvciByYW1hICovC"
+"mZsb2F0IHdfaFtOXTsKZmxvYXQgRFtOXTsKZmxvYXQgYTExW05dLCBhMTJbTl0sIGEyMVtOXSwgYT"
+"IyW05dOwpmbG9hdCBiMVtOXSwgYjJbTl07CgovKiBQcsOzeGltb3MgZXN0YWRvcyAqLwpmbG9hdCB"
+"4MV9uZXh0W05dOwpmbG9hdCB4Ml9uZXh0W05dOwpmbG9hdCB2X2luW05dOwpmbG9hdCB1X2luW05d"
+"OwoKLyogUExMICovCmZsb2F0IHdfcHJldiA9IDIqTV9QSSo1MDsKZmxvYXQgdV9wcmV2ID0gMC4wZ"
+"jsKZmxvYXQgZV9wcmV2ID0gMC4wZjsKZmxvYXQgdGhldGEgID0gMC4wZjsKCi8vdmFyaWFibGVzIA"
+"pmbG9hdCB2X3E7CmZsb2F0IHc7CmZsb2F0IGU7CmZsb2F0IHU7CmZsb2F0IGFfcGk7CmZsb2F0IGJ"
+"fcGk7CmZsb2F0IHRoZXRhX25leHQ7CgoK"
+        Show          off
+      }
+      Parameter {
+        Variable      "StartFcn"
+        Value         ""
+        Show          off
+      }
+      Parameter {
+        Variable      "OutputFcn"
+        Value         "OutputSignal(0, 0) =  x1[0] + x1[1] + x1[2];\n"
+"OutputSignal(1, 0) =  x1[0];\n"
+"OutputSignal(1, 1) =  x1[1];\n"
+"OutputSignal(1, 2) =  x1[2];\n"
+        Show          off
+      }
+      Parameter {
+        Variable      "UpdateFcn"
+        Value         base64 "b21lZ2Ffbm9tID0gMi4wZiAqIE1fUEkgKiBmX3A7CgovKiA9"
+"PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0KI"
+"CAgUEFSVEUgMTogTVNPR0kgRVNUw4FOREFSIChUVVNUSU4pCiAgID09PT09PT09PT09PT09PT09PT"
+"09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PSAqLwoKLyogRnJlY3VlbmNpYSB"
+"1c2FkYSBwb3IgZWwgYmFuY286CiAgIC0gZmlqYTogICAgICAgIHcgPSBvbWVnYV9ub207CiAgIC0g"
+"ZGVzZGUgUExMOiAgIHcgPSB3X3ByZXY7CiovCncgPSB3X3ByZXY7ICAgLyogbyB3ID0gb21lZ2Ffb"
+"m9tOyAqLwoKLyogMSkgZnJlY3VlbmNpYSBkZSBjYWRhIHJhbWE6IHdoX2kgPSBoX2kgKiB3ICovCm"
+"ZvciAoaW50IGkgPSAwOyBpIDwgTjsgaSsrKQp7CiAgICB3X2hbaV0gPSBoX3ZlY1tpXSAqIHc7Cn0"
+"KCi8qIDIpIHJlZCBkZSBkZXNhY29wbGUgY3J1emFkbyBlc3TDoW5kYXIKICAgICAgdV9pID0gdiAt"
+"IHN1bWEgZGUgc2FsaWRhcyBhbHBoYSBkZSBsYXMgb3RyYXMgcmFtYXMKKi8KZm9yIChpbnQgaSA9I"
+"DA7IGkgPCBOOyBpKyspCnsKICAgIGZsb2F0IHN1bV9vdGhlcnMgPSAwLjBmOwoKICAgIGZvciAoaW"
+"50IGogPSAwOyBqIDwgTjsgaisrKQogICAgewogICAgICAgIGlmIChqICE9IGkpCiAgICAgICAgICA"
+"gIHN1bV9vdGhlcnMgKz0geDFbal07CiAgICB9CgogICAgdV9pbltpXSA9IHYgLSBzdW1fb3RoZXJz"
+"Owp9CgovKiAzKSBhY3R1YWxpemFjacOzbiBUdXN0aW4gZGUgY2FkYSBTT0dJIGVzdMOhbmRhcgogI"
+"CAgICBNb2RlbG8gY29udGludW8gcG9yIHJhbWE6CiAgICAgIHgxX2RvdCA9IC1rKndoKngxIC0gd2"
+"gqeDIgKyBrKndoKnUKICAgICAgeDJfZG90ID0gIHdoKngxCiovCmZvciAoaW50IGkgPSAwOyBpIDw"
+"gTjsgaSsrKQp7CiAgICBmbG9hdCB3aCA9IHdfaFtpXTsKICAgIGZsb2F0IGtoID0ga192ZWNbaV07"
+"CgogICAgRFtpXSAgID0gNC4wZiArIDIuMGYgKiBUcyAqIGtoICogd2ggKyBUcyAqIFRzICogd2ggK"
+"iB3aDsKCiAgICBhMTFbaV0gPSAoNC4wZiAtIDIuMGYgKiBUcyAqIGtoICogd2ggLSBUcyAqIFRzIC"
+"ogd2ggKiB3aCkgLyBEW2ldOwogICAgYTEyW2ldID0gKC00LjBmICogVHMgKiB3aCkgLyBEW2ldOwo"
+"gICAgYTIxW2ldID0gKCA0LjBmICogVHMgKiB3aCkgLyBEW2ldOwogICAgYTIyW2ldID0gKDQuMGYg"
+"KyAyLjBmICogVHMgKiBraCAqIHdoIC0gVHMgKiBUcyAqIHdoICogd2gpIC8gRFtpXTsKCiAgICAvK"
+"iBGb3JtYSBUdXN0aW4gY29uIHByb21lZGlvIGRlIGVudHJhZGE6ICh1W2tdICsgdVtrLTFdKSAqLw"
+"ogICAgYjFbaV0gID0gKDIuMGYgKiBUcyAqIGtoICogd2gpIC8gRFtpXTsKICAgIGIyW2ldICA9ICh"
+"UcyAqIFRzICoga2ggKiB3aCAqIHdoKSAvIERbaV07CgogICAgeDFfbmV4dFtpXSA9IGExMVtpXSAq"
+"IHgxW2ldCiAgICAgICAgICAgICAgICsgYTEyW2ldICogeDJbaV0KICAgICAgICAgICAgICAgKyBiM"
+"VtpXSAgKiAodV9pbltpXSArIHVfcHJldl9hcnJbaV0pOwoKICAgIHgyX25leHRbaV0gPSBhMjFbaV"
+"0gKiB4MVtpXQogICAgICAgICAgICAgICArIGEyMltpXSAqIHgyW2ldCiAgICAgICAgICAgICAgICs"
+"gYjJbaV0gICogKHVfaW5baV0gKyB1X3ByZXZfYXJyW2ldKTsKfQoKLyogPT09PT09PT09PT09PT09"
+"PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09CiAgIFBBUlRFIDI6IFBBU"
+"ksgKM6xzrIg4oaSIGRxKQogICBTb2xvIGNvbiBsYSBmdW5kYW1lbnRhbAogICA9PT09PT09PT09PT"
+"09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0gKi8KZmxvYXQgc2l"
+"uX3QgPSBzaW5mKHRoZXRhKTsKZmxvYXQgY29zX3QgPSBjb3NmKHRoZXRhKTsKCi8vdl9kID0gIHgx"
+"X25leHRbMF0gKiBjb3NfdCArIHgyX25leHRbMF0gKiBzaW5fdDsKdl9xID0gLXgxX25leHRbMF0gK"
+"iBzaW5fdCArIHgyX25leHRbMF0gKiBjb3NfdDsKCi8qID09PT09PT09PT09PT09PT09PT09PT09PT"
+"09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQogICBQQVJURSAzOiBQSSAoVFVTVElOKQo"
+"gICA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09"
+"PT0gKi8KZSA9IHZfcTsKCmFfcGkgPSBLcCArIDAuNWYgKiBLaSAqIFRzOwpiX3BpID0gLUtwICsgM"
+"C41ZiAqIEtpICogVHM7Cgp1ID0gdV9wcmV2ICsgYV9waSAqIGUgKyBiX3BpICogZV9wcmV2OwoKLy"
+"ogU2kgcXVpZXJlcyBhY3RpdmFyIFBMTCByZWFsLCBkZXNjb21lbnRhIGVzdGEgbMOtbmVhIHkgY29"
+"tZW50YSB3ID0gb21lZ2Ffbm9tIGFycmliYSAqLwovKiB3ID0gb21lZ2Ffbm9tICsgdTsgKi8KCi8q"
+"ID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09P"
+"QogICBQQVJURSA0OiBJbnRlZ3JhZG9yIM64IChUVVNUSU4pCiAgID09PT09PT09PT09PT09PT09PT"
+"09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PSAqLwp0aGV0YV9uZXh0ID0gdGh"
+"ldGEgKyAwLjVmICogVHMgKiAodyArIHdfcHJldik7CgovKiBXcmFwICovCmlmICh0aGV0YV9uZXh0"
+"ID49IDIuMGYgKiBNX1BJKQogICAgdGhldGFfbmV4dCAtPSAyLjBmICogTV9QSTsKaWYgKHRoZXRhX"
+"25leHQgPCAwLjBmKQogICAgdGhldGFfbmV4dCArPSAyLjBmICogTV9QSTsKCi8qID09PT09PT09PT"
+"09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQogICBQQVJURSA"
+"1OiBBY3R1YWxpemFjacOzbiBkZSBlc3RhZG9zCiAgID09PT09PT09PT09PT09PT09PT09PT09PT09"
+"PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PSAqLwpmb3IgKGludCBpID0gMDsgaSA8IE47I"
+"GkrKykKewogICAgeDFbaV0gPSB4MV9uZXh0W2ldOwogICAgeDJbaV0gPSB4Ml9uZXh0W2ldOwogIC"
+"AgdV9wcmV2X2FycltpXSA9IHVfaW5baV07Cn0KCndfcHJldiA9IHc7CnVfcHJldiA9IHU7CmVfcHJ"
+"ldiA9IGU7CnRoZXRhICA9IHRoZXRhX25leHQ7"
+        Show          off
+      }
+      Parameter {
+        Variable      "DerivativeFcn"
+        Value         ""
+        Show          off
+      }
+      Parameter {
+        Variable      "TerminateFcn"
+        Value         ""
+        Show          off
+      }
+      Parameter {
+        Variable      "StoreCustomStateFcn"
+        Value         ""
+        Show          off
+      }
+      Parameter {
+        Variable      "RestoreCustomStateFcn"
+        Value         ""
+        Show          off
+      }
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Mux"
+      SrcTerminal   1
+      DstComponent  "Scope"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Sine Wave"
+      SrcTerminal   1
+      DstComponent  "Sum"
+      DstTerminal   2
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "C-Script28"
+      SrcTerminal   2
+      DstComponent  "Mux"
+      DstTerminal   3
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "C-Script28"
+      SrcTerminal   3
+      Points        [510, 190; 510, 185]
+      DstComponent  "Scope"
+      DstTerminal   2
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Sum"
+      SrcTerminal   1
+      Points        [380, 185]
+      Branch {
+        DstComponent  "C-Script28"
+        DstTerminal   1
+      }
+      Branch {
+        Points        [380, 155; 480, 155]
+        DstComponent  "Mux"
+        DstTerminal   2
+      }
+    }
+  }
+}
